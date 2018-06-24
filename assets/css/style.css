@@ -2,9 +2,21 @@
 body {
     background-color: black;
 }
-.btn {
+.buttonsDiv .btn {
     margin: 1rem 1rem 0 0;
+}
+.col {
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 1rem;
+}
+.text-warning {
+    background-color: black;
+    border: none;
 }
 .card-columns {
     margin-top: 1rem;
+}
+.card {
+    background-color: black;
 }

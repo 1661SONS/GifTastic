@@ -1,9 +1,6 @@
 // API key = nrnOysmPzPBWjJYThMdlRdiJzBtuJEJp
 $(document).ready( function() {
 
-    // api params to use
-        // q, limit, and rating
-    // make sure the query URL is using https
     // create a variable called topics to store an array of strings
     var topics = ['black panther', 'muhammad ali', 'atlanta falcons', 'atlanta hawks', 'atlanta braves', 'gta san andreas', 'jeep'];
 
@@ -15,31 +12,31 @@ $(document).ready( function() {
     
     // when a button is clicked
     $('.btn').on('click', function() {
+        
         // grab the button's text and save it as a variable called topic
         var topic = $(this).text();
         console.log(topic);
-
+       
+        // using the topic above as the giphy search query
         var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + topic + '&api_key=nrnOysmPzPBWjJYThMdlRdiJzBtuJEJp&limit=10&rating=PG-13&lang=en'
 
+        // getting the API response data
         $.ajax({
             url: queryURL,
             method: 'GET'
         }).then( function(response) {
-
             console.log(response);
-
+            
+            // saving the respose data in a variable
             var results = response.data;
 
+            // looping thru each result to later manipulate its data
             for (var i = 0; i < results.length; i++) {
-                var gifsDiv = $('<div class="card border-warning"><img class="card-img-top" src='+ results[i].images.fixed_height.url +' alt="Card image cap"><div class="card-body"><h5 class="card-title">' + results[i].title + '</h5><p class="card-text">Rating: '+ results[i].rating +'</p><a href="#" class="btn btn-primary">Download</a></div></div>');
-                var rating = $('<p class="text-warning">');
-                $(rating).text(results[i].title + ' Rating: ' + results[i].rating);
-                // var gifImage = $('<img>');
-                // $(gifImage).attr('src', results[i].images.fixed_height.url);
-
-                // console.log(results[i].images.fixed_height.url);
-                // $(gifsDiv).prepend(rating);
-                // $(gifsDiv).append(gifImage);
+                
+                // creating a nice boostrap image card with button to hold each gif
+                var gifsDiv = $('<div class="card border-warning"><img class="card-img-top" src='+ results[i].images.fixed_height.url +' alt="gif caption"><div class="card-body text-white"><h5 class="card-title">' + results[i].title + '</h5><p class="card-text">Rating: '+ results[i].rating +'</p><a href="#" class="btn btn-outline-warning">Download</a></div></div>');
+               
+                // prepending each gif card to the DOM
                 $('.dump').prepend(gifsDiv);
 
                 
@@ -50,7 +47,6 @@ $(document).ready( function() {
         // closing then function below
         });
 
-        // when this button is clicked, GET the search query of the topic and respond with 10 gifs related to the topic - prepend these 10 gifs on the page
         // these gifs should be still on default but animate when clicked, then still when clicked again (toggle)
         // display the gif's rating under each one
 
