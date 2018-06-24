@@ -5,12 +5,12 @@ $(document).ready( function() {
         // q, limit, and rating
     // make sure the query URL is using https
     // create a variable called topics to store an array of strings
-    var topics = ['black panther', 'muhammad ali', 'atlanta falcons', 'atlanta hawks', 'atlanta braves', 'grand theft auto san andreas', 'jeep wrangler'];
+    var topics = ['black panther', 'muhammad ali', 'atlanta falcons', 'atlanta hawks', 'atlanta braves', 'gta san andreas', 'jeep'];
 
     // for each topic in the topics array, 
     $.each(topics, function(index, value) {
         // create a button with its corresponding value as the button text
-        $('.buttonsDiv').append('<button data=' + index + ' class="btn btn-outline-dark">' + value);
+        $('.buttonsDiv').append('<button data=' + index + ' class="btn btn-outline-light">' + value);
     });
     
     // when a button is clicked
@@ -31,14 +31,20 @@ $(document).ready( function() {
             var results = response.data;
 
             for (var i = 0; i < results.length; i++) {
-                var gifsDiv = $('<div>');
-                var rating = $('<p>');
-                $(rating).text('Rating: ' + results[i].rating);
-                var gifImage = $('<img>');
-                $(gifImage).attr('src', results[i].images.fixed_height.url);
-                $(gifsDiv).append(rating);
-                $('.gifsDump').append(gifsDiv);
+                var gifsDiv = $('<div class="card border-warning"><img class="card-img-top" src='+ results[i].images.fixed_height.url +' alt="Card image cap"><div class="card-body"><h5 class="card-title">' + results[i].title + '</h5><p class="card-text">Rating: '+ results[i].rating +'</p><a href="#" class="btn btn-primary">Download</a></div></div>');
+                var rating = $('<p class="text-warning">');
+                $(rating).text(results[i].title + ' Rating: ' + results[i].rating);
+                // var gifImage = $('<img>');
+                // $(gifImage).attr('src', results[i].images.fixed_height.url);
+
+                // console.log(results[i].images.fixed_height.url);
+                // $(gifsDiv).prepend(rating);
+                // $(gifsDiv).append(gifImage);
+                $('.dump').prepend(gifsDiv);
+
                 
+
+               
             }
 
         // closing then function below

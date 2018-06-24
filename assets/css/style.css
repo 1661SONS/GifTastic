@@ -1,7 +1,10 @@
 /* GLOBAL STYLES *****************************************/
+body {
+    background-color: black;
+}
 .btn {
     margin: 1rem 1rem 0 0;
 }
-.btn:hover {
-    text-decoration: underline;
+.card-columns {
+    margin-top: 1rem;
 }
