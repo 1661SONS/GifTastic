@@ -1,3 +1,7 @@
-body {
-    background-color: pink;
+/* GLOBAL STYLES *****************************************/
+.btn {
+    margin: 1rem;
+}
+.btn:hover {
+    text-decoration: underline;
 }
