@@ -1,7 +1,7 @@
 /* GLOBAL STYLES *****************************************/
-/* body {
-    background-color: black;
-} */
+a.vidLink :hover {
+    color: #2181F7;
+}
 .buttonsDiv .btn {
     margin: 1rem 1rem 0 0;
 }
@@ -10,6 +10,12 @@
     padding-right: 0;
     margin-top: 1rem;
 }
+.bg-blue {
+    background-color: #e7f1fe;
+}
 .card-columns {
     margin-top: 1rem;
+}
+.input-group-append {
+    margin-right: 1rem;
 }

@@ -1,22 +1,25 @@
 // API key = nrnOysmPzPBWjJYThMdlRdiJzBtuJEJp
 $(document).ready( function() {
 
+    $('.vidLink').on('click', function(){
+        $('.youtube').append('<iframe width="560" height="315" src="https://www.youtube.com/embed/CBtKxsuGvko?rel=0&amp;start=48" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
+    });
+
     // create a variable called topics to store an array of strings
-    var topics = ['coming to america', 'dave chappelle', 'bernie mac', 'jim carrey', 'katt williams', 'the office', 'atlanta', 'black dynamite'];
+    var topics = ['coming to america', 'dave chappelle', 'jurassic park', 'deadpool', 'lego batman', 'the office', 'atlanta', 'back to the future'];
 
     // for each topic in the topics array, 
     $.each(topics, function(index, value) {
         // create a button with its corresponding value as the button text
-        $('.buttonsDiv').append('<button data=' + index + ' class="btn btn-outline-dark">' + value);
-    });
+        $('.buttonsDiv').append('<button data=' + index + ' class="btn btn-outline-dark generateGifButton">' + value);
+    });    
     
-    // when a button is clicked
-    $('.btn').on('click', function() {
+    // when one of the array buttons is clicked
+    $('.generateGifButton').on('click', function() {
         
-        // grab the button's text and save it as a variable called topic
+        // set the text of the button to the topic in the search query
         var topic = $(this).text();
-        console.log(topic);
-       
+          
         // using the topic above as the giphy search query
         var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + topic + '&api_key=nrnOysmPzPBWjJYThMdlRdiJzBtuJEJp&limit=10&rating=PG-13&lang=en'
 
@@ -34,45 +37,58 @@ $(document).ready( function() {
             for (var i = 0; i < results.length; i++) {
                 
                 // creating a nice boostrap image card with button to hold each gif
-                var gifsDiv = $('<div class="card border-dark"><img class="card-img-top" src='+ results[i].images.fixed_height.url +' alt="gif caption"><div class="card-body text-dark"><h5 class="card-title">' + results[i].title + '</h5><p class="card-text">Rating: '+ results[i].rating +'</p><a href="#" class="btn btn-outline-primary">Download</a></div></div>');
+                var gifsDiv = $('<div class="card border-dark"><img class="card-img-top" src='+ results[i].images.fixed_height.url +' alt="gif caption"><div class="card-body text-dark"><h5 class="card-title">' + results[i].title + '</h5><p class="card-text">Rating: '+ results[i].rating +'</p><a href="#" class="btn btn-outline-primary">download</a></div></div>');
                
                 // prepending each gif card to the DOM
                 $('.dump').prepend(gifsDiv);
-
-                
-
                
+                // these gifs should be still on default but animate when clicked, then still when clicked again (toggle)
+
+            } // closing for loop
+
+        }); // closing then function
+      
+    }); // closing button click even handler
+
+
+    // when the add gifs button is clicked
+    $('.addGifsButton').on('click', function() {
+        
+        // set the user's input to the topic in the search query
+        var userTopic = $('#searchInput').val();
+        console.log(userTopic);
+        
+        // repeat the same stuff done for the array buttons
+        var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + userTopic + '&api_key=nrnOysmPzPBWjJYThMdlRdiJzBtuJEJp&limit=10&rating=PG-13&lang=en'
+
+        $.ajax({
+            url: queryURL,
+            method: 'GET'
+        }).then( function(response) {
+            var results = response.data;
+
+            for (var i = 0; i < results.length; i++) {
+                
+                var gifsDiv = $('<div class="card border-dark"><img class="card-img-top" src='+ results[i].images.fixed_height.url +' alt="gif caption"><div class="card-body text-dark"><h5 class="card-title">' + results[i].title + '</h5><p class="card-text">Rating: '+ results[i].rating +'</p><a href="#" class="btn btn-outline-primary">download</a></div></div>');
+               
+                $('.dump').prepend(gifsDiv);
+                
             }
 
-        // closing then function below
-        });
+        }); // closing then function
 
-        // these gifs should be still on default but animate when clicked, then still when clicked again (toggle)
-        // display the gif's rating under each one
+    }); // closing button click even handler    
 
-    // allow the user to add their own topic button to append 10 gifs of their topic choice to the page (maybe prepend?)
 
-    // BONUS // allow the user to download any gif with a one-click button
-
-    // closing button click even handler below   
+    $('#clearGifs').on('click', function() {
+        $('.dump').empty();
+        $('#searchInput').val('');
     });
 
+}); // closing ready function below
 
 
+// these gifs should be still on default but animate when clicked, then still when clicked again (toggle)
+// BONUS // allow the user to download any gif with a one-click button
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// closing ready function below
-});
