@@ -1,8 +1,9 @@
 // API key = nrnOysmPzPBWjJYThMdlRdiJzBtuJEJp
 $(document).ready( function() {
 
+    // easter egg - display youtube video on link click
     $('.vidLink').on('click', function(){
-        $('.youtube').append('<iframe width="560" height="315" src="https://www.youtube.com/embed/CBtKxsuGvko?rel=0&amp;start=48" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
+        $('.youtube').append('<iframe width="560" height="349" src="https://www.youtube.com/embed/CBtKxsuGvko?rel=0&amp;start=48" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
     });
 
     // create a variable called topics to store an array of strings
@@ -73,17 +74,17 @@ $(document).ready( function() {
                
                 $('.dump').prepend(gifsDiv);
                 
-            }
+            } // closing for loop
 
         }); // closing then function
 
-    }); // closing button click even handler    
+    }); // closing button click event handler    
 
 
     $('#clearGifs').on('click', function() {
         $('.dump').empty();
         $('#searchInput').val('');
-    });
+    }); // closing click event handler
 
 }); // closing ready function below
 
