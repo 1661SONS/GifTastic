@@ -2,12 +2,12 @@
 $(document).ready( function() {
 
     // create a variable called topics to store an array of strings
-    var topics = ['black panther', 'muhammad ali', 'atlanta falcons', 'atlanta hawks', 'atlanta braves', 'gta san andreas', 'jeep'];
+    var topics = ['coming to america', 'dave chappelle', 'bernie mac', 'jim carrey', 'katt williams', 'the office', 'atlanta', 'black dynamite'];
 
     // for each topic in the topics array, 
     $.each(topics, function(index, value) {
         // create a button with its corresponding value as the button text
-        $('.buttonsDiv').append('<button data=' + index + ' class="btn btn-outline-light">' + value);
+        $('.buttonsDiv').append('<button data=' + index + ' class="btn btn-outline-dark">' + value);
     });
     
     // when a button is clicked
@@ -34,7 +34,7 @@ $(document).ready( function() {
             for (var i = 0; i < results.length; i++) {
                 
                 // creating a nice boostrap image card with button to hold each gif
-                var gifsDiv = $('<div class="card border-warning"><img class="card-img-top" src='+ results[i].images.fixed_height.url +' alt="gif caption"><div class="card-body text-white"><h5 class="card-title">' + results[i].title + '</h5><p class="card-text">Rating: '+ results[i].rating +'</p><a href="#" class="btn btn-outline-warning">Download</a></div></div>');
+                var gifsDiv = $('<div class="card border-dark"><img class="card-img-top" src='+ results[i].images.fixed_height.url +' alt="gif caption"><div class="card-body text-dark"><h5 class="card-title">' + results[i].title + '</h5><p class="card-text">Rating: '+ results[i].rating +'</p><a href="#" class="btn btn-outline-primary">Download</a></div></div>');
                
                 // prepending each gif card to the DOM
                 $('.dump').prepend(gifsDiv);

@@ -10,29 +10,28 @@
     <!-- custom stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body class="bg-gradient-dark">
     <div class='container'>
 
         <div class='row'>
-            <div class='col-md-12'>
-                <h1 class='text-center text-primary'>It's Pronounced Jiff</h1>
+            <div class='col-md-12 text-center'>
+                <h1 class='text-warning'>it's pronounced jiff – like the peanut butter</h1>
+                <h4 class="text-dark">click a button to add some</h4>
                 <div class='buttonsDiv'></div>
             </div>
         </div>
 
         <form class="form">
-            <div class="col">
-                <label for="searchLabel" class="sr-only">Search Giphy and Add Your Own Gifs</label>
-                <input class="text-warning" type="text" readonly class="form-control-plaintext" id="searchLabel" value="Search Giphy">
+            <div class="col-md-6 mx-auto text-center">
+                <label class="text-primary" for="searchLabel">or search for your own your own</label>
+                <div class="input-group">
+                    <input type="text" class="form-control border-primary">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary" type="button">add your gifs</button>
+                    </div>
+                </div>
             </div>
-            <div class="col">
-                <label for="searchInput" class="sr-only">Search Giphy and Add Your Own Gifs</label>
-                <input type="text" class="form-control" id="searchInput">
-                <button type="submit" class="btn btn-primary mb-2">Add Gifs</button>
-            </div>
-            
         </form>
-       
 
         <div class='row'>
             <div class='card-columns col-md-12'>
