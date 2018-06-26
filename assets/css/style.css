@@ -19,3 +19,7 @@ a.vidLink :hover {
 .input-group-append {
     margin-right: 1rem;
 }
+footer {
+    font-size: 0.5rem;
+    color: #2181F7;
+}

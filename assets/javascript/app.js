@@ -49,7 +49,7 @@ $(document).ready( function() {
 
         }); // closing then function
       
-    }); // closing button click even handler
+    }); // closing generateGifButton click even handler
 
 
     // when the add gifs button is clicked
@@ -73,22 +73,31 @@ $(document).ready( function() {
                 var gifsDiv = $('<div class="card border-dark"><img class="card-img-top" src='+ results[i].images.fixed_height.url +' alt="gif caption"><div class="card-body text-dark"><h5 class="card-title">' + results[i].title + '</h5><p class="card-text">Rating: '+ results[i].rating +'</p><a href="#" class="btn btn-outline-primary">download</a></div></div>');
                
                 $('.dump').prepend(gifsDiv);
+
+                // when a gif is clicked
+    // why tf isn't this working
+    $('.card').on('click', function() {
+        console.log('clicked');
+        // $('.card-img-top').remove('<img>');
+        // $('<img>').attr('src', results[i].images.fixed_height.url);
+    });
                 
             } // closing for loop
 
         }); // closing then function
 
-    }); // closing button click event handler    
-
+    }); // closing addGifsButton click event handler    
 
     $('#clearGifs').on('click', function() {
         $('.dump').empty();
         $('#searchInput').val('');
-    }); // closing click event handler
+    });
 
-}); // closing ready function below
+    
 
+}); // closing ready function
 
+// this code is not DRY, but it works
 // these gifs should be still on default but animate when clicked, then still when clicked again (toggle)
 // BONUS // allow the user to download any gif with a one-click button
 
